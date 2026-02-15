@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Vista de lista para estilistas -->
-    <record id="view_stylehub_estilista_tree" model="ir.ui.view">
+    <record id="view_stylehub_estilista_list" model="ir.ui.view">
         <field name="name">stylehub.estilista.list</field> <field name="model">stylehub.estilista</field>
         <field name="arch" type="xml">
             <list>
