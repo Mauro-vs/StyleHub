@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Vista de lista para servicios -->
-    <record id="view_stylehub_servicio_tree" model="ir.ui.view">
+    <record id="view_stylehub_servicio_list" model="ir.ui.view">
         <field name="name">stylehub.servicio.list</field>
         <field name="model">stylehub.servicio</field>
         <field name="arch" type="xml">
