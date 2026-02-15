@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="view_stylehub_cita_tree" model="ir.ui.view">
+    <record id="view_stylehub_cita_list" model="ir.ui.view">
         <field name="name">stylehub.cita.list</field>
         <field name="model">stylehub.cita</field>
         <field name="arch" type="xml">
