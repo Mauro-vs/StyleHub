@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_stylehub" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.stylehub</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//div[@name='button_box']" position="after">
+                <widget name="web_ribbon" title="VIP" bg_color="text-bg-warning" invisible="not is_vip"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

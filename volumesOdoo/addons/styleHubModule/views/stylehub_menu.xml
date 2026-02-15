@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="stylehub_menu_root" 
+              name="StyleHub"/>
+
+    <menuitem id="stylehub_menu_citas"
+              name="Agenda de Citas"
+              parent="stylehub_menu_root"
+              action="action_stylehub_citas"
+              sequence="1"/>
+
+    <menuitem id="stylehub_menu_catalogo"
+              name="Catálogo"
+              parent="stylehub_menu_root"
+              sequence="10"/>
+
+        <menuitem id="stylehub_menu_estilistas"
+                  name="Estilistas"
+                  parent="stylehub_menu_catalogo"
+                  action="action_stylehub_estilistas"
+                  sequence="10"/>
+
+        <menuitem id="stylehub_menu_servicios"
+                  name="Servicios"
+                  parent="stylehub_menu_catalogo"
+                  action="action_stylehub_servicios"
+                  sequence="20"/>
+
+</odoo>

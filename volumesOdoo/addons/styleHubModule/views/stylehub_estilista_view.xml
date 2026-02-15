@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista de lista para estilistas -->
+    <record id="view_stylehub_estilista_tree" model="ir.ui.view">
+        <field name="name">stylehub.estilista.list</field> <field name="model">stylehub.estilista</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="especialidad"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de formulario para estilistas -->
+    <record id="view_stylehub_estilista_form" model="ir.ui.view">
+        <field name="name">stylehub.estilista.form</field>
+        <field name="model">stylehub.estilista</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name" string="Nombre del Estilista"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <field name="especialidad"/>
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                    <notebook>
+                        <page string="Citas">
+                            <field name="cita_ids">
+                                <list decoration-info="state == 'borrador'" decoration-success="state == 'realizada'">
+                                    <field name="name"/>
+                                    <field name="fecha_inicio"/>
+                                    <field name="cliente_id"/>
+                                    <field name="amount_total" widget="monetary"/>
+                                    <field name="state" widget="badge"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción para estilistas -->
+    <record id="action_stylehub_estilistas" model="ir.actions.act_window">
+        <field name="name">Estilistas</field>
+        <field name="res_model">stylehub.estilista</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
