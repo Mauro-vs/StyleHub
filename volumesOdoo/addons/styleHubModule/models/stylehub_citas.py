@@ -8,7 +8,7 @@ class StylehubCita(models.Model):
     _name = "stylehub.cita"
     _description = "Cita de Peluquería"
     _order = "fecha_inicio desc"
-    _rec_name = "name" 
+    _rec_name = "name"
 
     # CAMPOS DEL MODELO
     
@@ -50,6 +50,8 @@ class StylehubCita(models.Model):
 
     # MÉTODOS COMPUTADOS
 
+    # Aqui se cree el nombre/referencia de la cita, 
+    # con el servicio q se va a realizar y el cliente de esa cita
     @api.depends('cliente_id.name', 'lineas_ids.servicio_id.name')
     def _compute_name(self):
         """
@@ -59,7 +61,7 @@ class StylehubCita(models.Model):
         for cita in self:
             if cita.cliente_id:
                 # Obtenemos una lista con los nombres de todos los servicios de esta cita
-                nombres_servicios = cita.lineas_ids.mapped('servicio_id.name')
+                nombres_servicios = cita.lineas_ids.mapped('servicio_id.name') # Utilizo el .mapped para no tener q acceder a la base de datos en cada acceso y obtener una lista directa de nombres
                 servicios_str = ", ".join(nombres_servicios) if nombres_servicios else "Sin servicios"
                 cita.name = f"{servicios_str} - {cita.cliente_id.name}"
             else:
@@ -118,7 +120,7 @@ class StylehubCita(models.Model):
             if not cita.fecha_inicio or not cita.fecha_fin:
                 continue
 
-            # 1. Fijamos la zona horaria directamente a España (ignora dónde esté el usuario)
+            # 1. Fijamos la zona horaria directamente a España
             tz_espana = pytz.timezone('Europe/Madrid')
 
             # 2. Convertimos las fechas UTC de la base de datos a la hora real de España
@@ -137,6 +139,7 @@ class StylehubCita(models.Model):
                     f"El horario comercial es de 08:00 a 20:00 (Hora de España).\n"
                     f"Estás intentando guardar una cita de {inicio_local.strftime('%H:%M')} a {fin_local.strftime('%H:%M')}."
                 )
+            
     # FLUJO DE ESTADOS (WORKFLOW)
     
     def action_confirmar(self):

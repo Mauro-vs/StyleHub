@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api # type: ignore
 
 class Cliente(models.Model):
     # Usamos _inherit en lugar de _name

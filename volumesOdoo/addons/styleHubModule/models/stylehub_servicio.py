@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import models, fields # type: ignore
 
 class StylehubServicio(models.Model):
     _name = "stylehub.servicio"
